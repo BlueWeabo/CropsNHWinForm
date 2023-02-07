@@ -230,7 +230,7 @@ namespace CropsNH
 
         private void DeleteCropButton_Click(object sender, EventArgs e)
         {
-            Prompt confirm = new Prompt(true);
+            Prompt confirm = new(true);
             confirm.promptText.Text = "Are you sure you want to delete it?";
             confirm.ShowDialog();
             if (Prompt.cancelled) return;
