@@ -246,25 +246,25 @@ namespace CropsNH
                         Requirements = rdr["cropRequirements"] is DBNull ? "" : (string)rdr["cropRequirements"],
                         cropbreed = rdr["cropBreedID"] is DBNull ? 0 : (int)rdr["cropBreedID"]
                     };
-                    crop.MutationChance = (10000 - (crop.Tier - 1) * 500)/10000.0f;
+                    crop.MutationChance = (10000 - (crop.Tier - 1) * 500) / 10000.0f;
                     Crops.Add(crop);
                 }
-                rdr.Close();
-                foreach (Crop crop in Crops)
+            }
+            rdr.Close();
+            foreach (Crop crop in Crops)
+            {
+                if (crop.cropbreed != 0)
                 {
-                    if (crop.cropbreed != 0)
-                    {
-                        int[] parents = CropBreed.GetParentIDsFromCropBreedID(crop.cropbreed);
-                        string parentOne = GetCropNameFromID(parents[0]);
-                        string parentTwo = GetCropNameFromID(parents[1]);
-                        crop.ParentOne = parentOne;
-                        crop.ParentTwo = parentTwo;
-                    }
-                    else
-                    {
-                        crop.ParentOne = "None";
-                        crop.ParentTwo = "None";
-                    }
+                    int[] parents = CropBreed.GetParentIDsFromCropBreedID(crop.cropbreed);
+                    string parentOne = GetCropNameFromID(parents[0]);
+                    string parentTwo = GetCropNameFromID(parents[1]);
+                    crop.ParentOne = parentOne;
+                    crop.ParentTwo = parentTwo;
+                }
+                else
+                {
+                    crop.ParentOne = "None";
+                    crop.ParentTwo = "None";
                 }
             }
         }
