@@ -230,6 +230,10 @@ namespace CropsNH
 
         private void DeleteCropButton_Click(object sender, EventArgs e)
         {
+            Prompt confirm = new Prompt(true);
+            confirm.promptText.Text = "Are you sure you want to delete it?";
+            confirm.ShowDialog();
+            if (Prompt.cancelled) return;
             Crop.DeleteCropWithName(Delete_CropToDeleteComboBox.Text);
             mChanged = true;
             ReloadDataGrid();

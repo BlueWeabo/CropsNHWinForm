@@ -34,7 +34,7 @@ namespace CropsNH
             rdr.Close();
             if (id <= 0)
             {
-                Prompt prompt = new Prompt();
+                Prompt prompt = new Prompt(false);
                 prompt.promptText.Text = "Logged in with view-only access.";
                 prompt.ShowDialog();
             }
