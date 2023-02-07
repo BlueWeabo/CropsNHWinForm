@@ -191,8 +191,8 @@ namespace CropsNH
             }
             else
             {
-                if ((aCrop.ParentOne == null ? true : aCrop.ParentOne.Equals("None")) 
-                    || (aCrop.ParentTwo == null ? true : aCrop.ParentTwo.Equals("None"))) return;
+                if (aCrop.ParentOne == null ? true : aCrop.ParentOne.Equals("None")
+                    || aCrop.ParentTwo == null ? true : aCrop.ParentTwo.Equals("None")) return;
                 CropBreed.AddCropBreed(GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne),
                     GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo));
                 CropBreed.UpdateCropBredIDWithCropBreedID(aCrop.CropID, aCrop.cropbreed);
