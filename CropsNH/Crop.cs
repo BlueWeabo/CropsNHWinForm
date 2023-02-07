@@ -175,14 +175,36 @@ namespace CropsNH
             mCommand.Parameters.AddWithValue("@cropRequirements", aCrop.Requirements);
             mCommand.Parameters.AddWithValue("@id", aCrop.CropID);
             mCommand.ExecuteNonQuery();
-            mCommand.CommandText = "Update CropBreed " +
+            if (aCrop.cropbreed != 0)
+            {
+                mCommand.CommandText = "Update CropBreed " +
                 "set parentOneID = @parentOneID, " +
                 "parentTwoID = @parentTwoID " +
                 "where cropBredID = @cropBredID;";
+                mCommand.Parameters.Clear();
+                int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
+                int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
+                mCommand.Parameters.AddWithValue("@parentOneID", p1);
+                mCommand.Parameters.AddWithValue("@parentTwoID", p2);
+                mCommand.Parameters.AddWithValue("@cropBredID", aCrop.CropID);
+                mCommand.ExecuteNonQuery();
+            }
+            else
+            {
+                if (aCrop.ParentOne.Equals("None")) return;
+                CropBreed.AddCropBreed(GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne),
+                    GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo));
+                CropBreed.UpdateCropBredIDWithCropBreedID(aCrop.CropID, aCrop.cropbreed);
+                SetCropBreedIDForCropID(aCrop.CropID, CropBreed.GetCropBreedIDFromCropBredID(aCrop.CropID));
+            }
+        }
+
+        public static void SetCropBreedIDForCropID(int cropID, int cropBreedID)
+        {
+            mCommand.CommandText = "Update Crops set cropBreedID = @cropBreedID where id = @cropID;";
             mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@parentOneID", GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne));
-            mCommand.Parameters.AddWithValue("@parentTwoID", GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo));
-            mCommand.Parameters.AddWithValue("@cropBredID", aCrop.CropID);
+            mCommand.Parameters.AddWithValue("@cropBreedID", cropBreedID);
+            mCommand.Parameters.AddWithValue("@cropID", cropID);
             mCommand.ExecuteNonQuery();
         }
 

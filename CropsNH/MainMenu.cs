@@ -204,7 +204,8 @@ namespace CropsNH
                 Tier = (int)Edit_CropTierNumber.Value,
                 Requirements = Edit_CropRequirementsTextBox.Text,
                 ParentOne = Edit_CropParentOne.Text,
-                ParentTwo = Edit_CropParentTwo.Text
+                ParentTwo = Edit_CropParentTwo.Text,
+                cropbreed = CropBreed.GetCropBreedIDFromCropBredID(Crop.GetCropIDFromName(Edit_CropToEditComboBox.Text))
             };
             Crop.UpdateCrop(tCrop);
             ReloadEdit();
