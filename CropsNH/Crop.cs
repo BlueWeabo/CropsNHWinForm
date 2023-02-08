@@ -17,8 +17,8 @@ namespace CropsNH
     {
         #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static BindingList<Crop> Crops = new();
-#pragma warning restore CA2211 // Non-constant fields should not be visible
-        private static MySqlCommand mCommand = new("",Program.mConnection);
+        #pragma warning restore CA2211 // Non-constant fields should not be visible
+        private static readonly MySqlCommand mCommand = new("",Program.mConnection);
         public int cropbreed=0;
         public int CropID { get; set; }
 		public string? CropName { get; set; }
@@ -177,7 +177,7 @@ namespace CropsNH
             mCommand.ExecuteNonQuery();
             if (aCrop.cropbreed != 0)
             {
-                if (aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None"))
+                if (aCrop.ParentOne == null || aCrop.ParentTwo == null || aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None"))
                 {
                     mCommand.CommandText = "Update Crops set cropBreedID = null where id = @id;";
                     mCommand.Parameters.Clear();
