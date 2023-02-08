@@ -177,26 +177,37 @@ namespace CropsNH
             mCommand.ExecuteNonQuery();
             if (aCrop.cropbreed != 0)
             {
-                mCommand.CommandText = "Update CropBreed " +
-                "set parentOneID = @parentOneID, " +
-                "parentTwoID = @parentTwoID " +
-                "where cropBredID = @cropBredID;";
-                mCommand.Parameters.Clear();
-                int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
-                int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
-                mCommand.Parameters.AddWithValue("@parentOneID", p1);
-                mCommand.Parameters.AddWithValue("@parentTwoID", p2);
-                mCommand.Parameters.AddWithValue("@cropBredID", aCrop.CropID);
-                mCommand.ExecuteNonQuery();
+                if (aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None"))
+                {
+                    mCommand.CommandText = "Update Crops set cropBreedID = null where id = @id;";
+                    mCommand.Parameters.Clear();
+                    mCommand.Parameters.AddWithValue("@id", aCrop.CropID);
+                    mCommand.ExecuteNonQuery();
+                    CropBreed.RemoveCropBreed(aCrop.cropbreed);
+                }
+                else
+                {
+                    mCommand.CommandText = "Update CropBreed " +
+                        "set parentOneID = @parentOneID, " +
+                        "parentTwoID = @parentTwoID " +
+                        "where cropBredID = @cropBredID;";
+                    mCommand.Parameters.Clear();
+                    int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
+                    int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
+                    mCommand.Parameters.AddWithValue("@parentOneID", p1);
+                    mCommand.Parameters.AddWithValue("@parentTwoID", p2);
+                    mCommand.Parameters.AddWithValue("@cropBredID", aCrop.CropID);
+                    mCommand.ExecuteNonQuery();
+                }
             }
             else
             {
-                if (aCrop.ParentOne == null ? true : aCrop.ParentOne.Equals("None")
-                    || aCrop.ParentTwo == null ? true : aCrop.ParentTwo.Equals("None")) return;
-                CropBreed.AddCropBreed(GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne),
-                    GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo));
-                CropBreed.UpdateCropBredIDWithCropBreedID(aCrop.CropID, aCrop.cropbreed);
-                SetCropBreedIDForCropID(aCrop.CropID, CropBreed.GetCropBreedIDFromCropBredID(aCrop.CropID));
+                if (aCrop.ParentOne == null || aCrop.ParentTwo == null || aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None")) return;
+                CropBreed.AddCropBreed(GetCropIDFromName(aCrop.ParentOne), GetCropIDFromName(aCrop.ParentTwo));
+                CropBreed.UpdateCropBredIDWithCropBreedID(aCrop.CropID,
+                    CropBreed.GetCropBreedIDFromParents(GetCropIDFromName(aCrop.ParentOne), GetCropIDFromName(aCrop.ParentTwo)));
+                aCrop.cropbreed = CropBreed.GetCropBreedIDFromCropBredID(aCrop.CropID);
+                SetCropBreedIDForCropID(aCrop.CropID, aCrop.cropbreed);
             }
         }
 
