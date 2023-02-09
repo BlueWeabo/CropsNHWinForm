@@ -93,7 +93,7 @@
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "X";
             this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -147,7 +147,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.loginButton_Click);
+            this.button1.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // label1
             // 

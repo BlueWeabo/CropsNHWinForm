@@ -12,7 +12,10 @@ namespace CropsNH
 {
     public partial class Prompt : Form
     {
-        public static bool cancelled = false;
+        private static bool cancelled = false;
+
+        public static bool Cancelled { get => cancelled; set => cancelled = value; }
+
         public Prompt(bool isConfirm)
         {
             InitializeComponent();
@@ -25,13 +28,13 @@ namespace CropsNH
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            cancelled = false;
+            Cancelled = false;
             Close();
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            cancelled = true;
+            Cancelled = true;
             Close();
         }
     }

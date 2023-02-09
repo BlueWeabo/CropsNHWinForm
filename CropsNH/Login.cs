@@ -19,7 +19,7 @@ namespace CropsNH
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
             MySqlCommand cmd = new()
             {
@@ -43,7 +43,7 @@ namespace CropsNH
             Close();
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Program.mMenu.Close();
             Close();

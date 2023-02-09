@@ -6,7 +6,7 @@ namespace CropsNH
     internal static class Program
     {
         public static MySqlConnection mConnection = new(@"server=localhost;uid=root;pwd=1234;database=CropsNH");
-        public static MainMenu mMenu;
+        public static MainMenu? mMenu;
         [STAThread]
         static void Main()
         {

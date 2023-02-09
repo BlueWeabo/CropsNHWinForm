@@ -234,7 +234,7 @@ namespace CropsNH
             Prompt confirm = new(true);
             confirm.promptText.Text = "Are you sure you want to delete it?";
             confirm.ShowDialog();
-            if (Prompt.cancelled) return;
+            if (Prompt.Cancelled) return;
             Crop.DeleteCropWithName(Delete_CropToDeleteComboBox.Text);
             mChanged = true;
             ReloadDataGrid();
