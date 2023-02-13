@@ -30,10 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.cropBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -85,7 +90,6 @@
             this.Save_CropNameLabel = new System.Windows.Forms.Label();
             this.Save_SaveNewCropButton = new System.Windows.Forms.Button();
             this.CropDataGrid = new System.Windows.Forms.DataGridView();
-            this.cropIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cropNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requirementsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -314,7 +318,7 @@
             this.Edit_CropNewName.BackColor = System.Drawing.Color.DarkCyan;
             this.Edit_CropNewName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Edit_CropNewName.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Edit_CropNewName.ForeColor = System.Drawing.Color.Lime;
+            this.Edit_CropNewName.ForeColor = System.Drawing.Color.PaleGreen;
             this.Edit_CropNewName.Location = new System.Drawing.Point(95, 16);
             this.Edit_CropNewName.Name = "Edit_CropNewName";
             this.Edit_CropNewName.Size = new System.Drawing.Size(86, 43);
@@ -344,7 +348,7 @@
             this.Edit_CropParentOne.BackColor = System.Drawing.Color.DarkCyan;
             this.Edit_CropParentOne.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Edit_CropParentOne.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Edit_CropParentOne.ForeColor = System.Drawing.Color.Lime;
+            this.Edit_CropParentOne.ForeColor = System.Drawing.Color.PaleGreen;
             this.Edit_CropParentOne.FormattingEnabled = true;
             this.Edit_CropParentOne.IntegralHeight = false;
             this.Edit_CropParentOne.ItemHeight = 28;
@@ -361,7 +365,7 @@
             this.Edit_CropParentTwo.BackColor = System.Drawing.Color.DarkCyan;
             this.Edit_CropParentTwo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Edit_CropParentTwo.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Edit_CropParentTwo.ForeColor = System.Drawing.Color.Lime;
+            this.Edit_CropParentTwo.ForeColor = System.Drawing.Color.PaleGreen;
             this.Edit_CropParentTwo.FormattingEnabled = true;
             this.Edit_CropParentTwo.IntegralHeight = false;
             this.Edit_CropParentTwo.Location = new System.Drawing.Point(31, 94);
@@ -419,7 +423,7 @@
             this.Edit_CropTierNumber.BackColor = System.Drawing.Color.DarkCyan;
             this.Edit_CropTierNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Edit_CropTierNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Edit_CropTierNumber.ForeColor = System.Drawing.Color.Lime;
+            this.Edit_CropTierNumber.ForeColor = System.Drawing.Color.PaleGreen;
             this.Edit_CropTierNumber.Location = new System.Drawing.Point(37, 95);
             this.Edit_CropTierNumber.Name = "Edit_CropTierNumber";
             this.Edit_CropTierNumber.Size = new System.Drawing.Size(46, 34);
@@ -510,7 +514,7 @@
             this.Edit_CropToEditComboBox.BackColor = System.Drawing.Color.DarkCyan;
             this.Edit_CropToEditComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Edit_CropToEditComboBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Edit_CropToEditComboBox.ForeColor = System.Drawing.Color.Lime;
+            this.Edit_CropToEditComboBox.ForeColor = System.Drawing.Color.PaleGreen;
             this.Edit_CropToEditComboBox.FormattingEnabled = true;
             this.Edit_CropToEditComboBox.IntegralHeight = false;
             this.Edit_CropToEditComboBox.ItemHeight = 28;
@@ -571,7 +575,7 @@
             this.Delete_CropToDeleteComboBox.BackColor = System.Drawing.Color.DarkCyan;
             this.Delete_CropToDeleteComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Delete_CropToDeleteComboBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Delete_CropToDeleteComboBox.ForeColor = System.Drawing.Color.Lime;
+            this.Delete_CropToDeleteComboBox.ForeColor = System.Drawing.Color.PaleGreen;
             this.Delete_CropToDeleteComboBox.FormattingEnabled = true;
             this.Delete_CropToDeleteComboBox.IntegralHeight = false;
             this.Delete_CropToDeleteComboBox.ItemHeight = 28;
@@ -700,7 +704,7 @@
             this.Save_CropParentOne.BackColor = System.Drawing.Color.DarkCyan;
             this.Save_CropParentOne.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Save_CropParentOne.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Save_CropParentOne.ForeColor = System.Drawing.Color.Lime;
+            this.Save_CropParentOne.ForeColor = System.Drawing.Color.PaleGreen;
             this.Save_CropParentOne.FormattingEnabled = true;
             this.Save_CropParentOne.IntegralHeight = false;
             this.Save_CropParentOne.ItemHeight = 28;
@@ -717,7 +721,7 @@
             this.Save_CropParentTwo.BackColor = System.Drawing.Color.DarkCyan;
             this.Save_CropParentTwo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Save_CropParentTwo.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Save_CropParentTwo.ForeColor = System.Drawing.Color.Lime;
+            this.Save_CropParentTwo.ForeColor = System.Drawing.Color.PaleGreen;
             this.Save_CropParentTwo.FormattingEnabled = true;
             this.Save_CropParentTwo.IntegralHeight = false;
             this.Save_CropParentTwo.Location = new System.Drawing.Point(32, 126);
@@ -775,7 +779,7 @@
             this.Save_CropTierNumber.BackColor = System.Drawing.Color.DarkCyan;
             this.Save_CropTierNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Save_CropTierNumber.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Save_CropTierNumber.ForeColor = System.Drawing.Color.Lime;
+            this.Save_CropTierNumber.ForeColor = System.Drawing.Color.PaleGreen;
             this.Save_CropTierNumber.Location = new System.Drawing.Point(38, 127);
             this.Save_CropTierNumber.Name = "Save_CropTierNumber";
             this.Save_CropTierNumber.Size = new System.Drawing.Size(48, 34);
@@ -862,7 +866,6 @@
             this.CropDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CropDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CropDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cropIDDataGridViewTextBoxColumn,
             this.cropNameDataGridViewTextBoxColumn,
             this.tierDataGridViewTextBoxColumn,
             this.requirementsDataGridViewTextBoxColumn,
@@ -870,53 +873,44 @@
             this.parentTwoDataGridViewTextBoxColumn,
             this.MutationChance});
             this.CropDataGrid.DataSource = this.cropBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.LimeGreen;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DarkGreen;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.CropDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CropDataGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.CropDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CropDataGrid.GridColor = System.Drawing.Color.SeaGreen;
+            this.CropDataGrid.GridColor = System.Drawing.Color.LightGreen;
             this.CropDataGrid.Location = new System.Drawing.Point(0, 0);
             this.CropDataGrid.Name = "CropDataGrid";
             this.CropDataGrid.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DarkGreen;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CropDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DarkGreen;
-            this.CropDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CropDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.CropDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.CropDataGrid.RowTemplate.Height = 25;
             this.CropDataGrid.Size = new System.Drawing.Size(199, 355);
             this.CropDataGrid.TabIndex = 2;
             // 
-            // cropIDDataGridViewTextBoxColumn
-            // 
-            this.cropIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cropIDDataGridViewTextBoxColumn.DataPropertyName = "CropID";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Lime;
-            this.cropIDDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.cropIDDataGridViewTextBoxColumn.FillWeight = 76.14214F;
-            this.cropIDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.cropIDDataGridViewTextBoxColumn.MinimumWidth = 40;
-            this.cropIDDataGridViewTextBoxColumn.Name = "cropIDDataGridViewTextBoxColumn";
-            this.cropIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cropIDDataGridViewTextBoxColumn.Width = 40;
-            // 
             // cropNameDataGridViewTextBoxColumn
             // 
             this.cropNameDataGridViewTextBoxColumn.DataPropertyName = "CropName";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.cropNameDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.cropNameDataGridViewTextBoxColumn.FillWeight = 96.2654F;
             this.cropNameDataGridViewTextBoxColumn.HeaderText = "Crop Name";
             this.cropNameDataGridViewTextBoxColumn.Name = "cropNameDataGridViewTextBoxColumn";
@@ -925,6 +919,11 @@
             // tierDataGridViewTextBoxColumn
             // 
             this.tierDataGridViewTextBoxColumn.DataPropertyName = "Tier";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.tierDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.tierDataGridViewTextBoxColumn.FillWeight = 96.2654F;
             this.tierDataGridViewTextBoxColumn.HeaderText = "Tier";
             this.tierDataGridViewTextBoxColumn.Name = "tierDataGridViewTextBoxColumn";
@@ -933,6 +932,11 @@
             // requirementsDataGridViewTextBoxColumn
             // 
             this.requirementsDataGridViewTextBoxColumn.DataPropertyName = "Requirements";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.requirementsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.requirementsDataGridViewTextBoxColumn.FillWeight = 192.5308F;
             this.requirementsDataGridViewTextBoxColumn.HeaderText = "Requirements";
             this.requirementsDataGridViewTextBoxColumn.Name = "requirementsDataGridViewTextBoxColumn";
@@ -941,6 +945,11 @@
             // parentOneDataGridViewTextBoxColumn
             // 
             this.parentOneDataGridViewTextBoxColumn.DataPropertyName = "ParentOne";
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.parentOneDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.parentOneDataGridViewTextBoxColumn.FillWeight = 96.2654F;
             this.parentOneDataGridViewTextBoxColumn.HeaderText = "Parent One";
             this.parentOneDataGridViewTextBoxColumn.Name = "parentOneDataGridViewTextBoxColumn";
@@ -949,6 +958,11 @@
             // parentTwoDataGridViewTextBoxColumn
             // 
             this.parentTwoDataGridViewTextBoxColumn.DataPropertyName = "ParentTwo";
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.parentTwoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.parentTwoDataGridViewTextBoxColumn.FillWeight = 96.2654F;
             this.parentTwoDataGridViewTextBoxColumn.HeaderText = "Parent Two";
             this.parentTwoDataGridViewTextBoxColumn.Name = "parentTwoDataGridViewTextBoxColumn";
@@ -957,6 +971,11 @@
             // MutationChance
             // 
             this.MutationChance.DataPropertyName = "MutationChance";
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.PaleGreen;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.DarkGreen;
+            this.MutationChance.DefaultCellStyle = dataGridViewCellStyle7;
             this.MutationChance.FillWeight = 96.2654F;
             this.MutationChance.HeaderText = "Mutation Chance";
             this.MutationChance.Name = "MutationChance";
@@ -969,7 +988,7 @@
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.ForeColor = System.Drawing.Color.LimeGreen;
+            this.ForeColor = System.Drawing.Color.PaleGreen;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainMenu";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1070,7 +1089,6 @@
         private ComboBox Delete_CropToDeleteComboBox;
         private Label Delete_CropLabel;
         private Button Delete_CropDeleteButton;
-        private DataGridViewTextBoxColumn cropIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cropNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn tierDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn requirementsDataGridViewTextBoxColumn;

@@ -86,6 +86,8 @@ namespace CropsNH
                     id = (int)rdr["id"];
                 }
             }
+            rdr.Close();
+            mCommand.Parameters.Clear();
             return id;
         }
 
@@ -187,13 +189,13 @@ namespace CropsNH
                 }
                 else
                 {
+                    int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
+                    int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
+                    mCommand.Parameters.Clear();
                     mCommand.CommandText = "Update CropBreed " +
                         "set parentOneID = @parentOneID, " +
                         "parentTwoID = @parentTwoID " +
                         "where cropBredID = @cropBredID;";
-                    mCommand.Parameters.Clear();
-                    int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
-                    int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
                     mCommand.Parameters.AddWithValue("@parentOneID", p1);
                     mCommand.Parameters.AddWithValue("@parentTwoID", p2);
                     mCommand.Parameters.AddWithValue("@cropBredID", aCrop.CropID);

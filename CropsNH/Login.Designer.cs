@@ -56,6 +56,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.PaleGreen;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -116,7 +117,7 @@
             this.passwordText.BackColor = System.Drawing.Color.DarkCyan;
             this.passwordText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordText.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.passwordText.ForeColor = System.Drawing.Color.Lime;
+            this.passwordText.ForeColor = System.Drawing.Color.PaleGreen;
             this.passwordText.Location = new System.Drawing.Point(123, 21);
             this.passwordText.Name = "passwordText";
             this.passwordText.PasswordChar = '*';
@@ -140,7 +141,7 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Lime;
+            this.button1.ForeColor = System.Drawing.Color.PaleGreen;
             this.button1.Location = new System.Drawing.Point(3, 277);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(295, 61);
@@ -193,7 +194,7 @@
             this.usernameText.BackColor = System.Drawing.Color.DarkCyan;
             this.usernameText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usernameText.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.usernameText.ForeColor = System.Drawing.Color.Lime;
+            this.usernameText.ForeColor = System.Drawing.Color.PaleGreen;
             this.usernameText.Location = new System.Drawing.Point(123, 17);
             this.usernameText.Name = "usernameText";
             this.usernameText.Size = new System.Drawing.Size(169, 34);
