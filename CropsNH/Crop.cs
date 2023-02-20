@@ -1,45 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.SqlClient;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using MySql.Data.MySqlClient;
 
 namespace CropsNH
 {
     public class Crop
     {
-        #pragma warning disable CA2211 // Non-constant fields should not be visible
+#pragma warning disable CA2211 // Non-constant fields should not be visible
         public static BindingList<Crop> Crops = new();
-        #pragma warning restore CA2211 // Non-constant fields should not be visible
-        private static readonly MySqlCommand mCommand = new("",Program.mConnection);
-        public int cropbreed=0;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
+        private static readonly MySqlCommand mCommand = new("", Program.mConnection);
+        public int cropbreed = 0;
         public int CropID { get; set; }
-		public string? CropName { get; set; }
-		public int Tier { get; set; }
-		public string? Requirements { get; set; }
-		public string? ParentOne { get; set; }
+        public string? CropName { get; set; }
+        public int Tier { get; set; }
+        public string? Requirements { get; set; }
+        public string? ParentOne { get; set; }
         public string? ParentTwo { get; set; }
 
         public float MutationChance { get; set; }
 
         // Adds a crop with the given parameters. This adds a crop which comes from 2 parents
-		public static void AddCrop(string cropName, int tier, string requirements, int cropBreedID)
-		{
+        public static void AddCrop(string cropName, int tier, string requirements, int cropBreedID)
+        {
             mCommand.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements, cropBreedID)" +
                 "values (@cropName, @cropTier, @cropRequirements, @cropBreed);";
             mCommand.Parameters.Clear();
             mCommand.Parameters.AddWithValue("@cropName", cropName);
             mCommand.Parameters.AddWithValue("@cropTier", tier);
             mCommand.Parameters.AddWithValue("@cropRequirements", requirements);
-			mCommand.Parameters.AddWithValue("@cropBreed", cropBreedID);
-			mCommand.ExecuteNonQuery();
+            mCommand.Parameters.AddWithValue("@cropBreed", cropBreedID);
+            mCommand.ExecuteNonQuery();
         }
 
         // Adds a crop with the given parameters. This adds a crop, which has no parents
@@ -56,7 +46,7 @@ namespace CropsNH
 
         // Returns all crop names in an array form
         public static string[] GetCropNames()
-		{
+        {
             List<string> crops = new()
             {
                 "None"
@@ -64,20 +54,20 @@ namespace CropsNH
             mCommand.CommandText = "Select cropName from Crops";
             mCommand.Parameters.Clear();
             MySqlDataReader rdr = mCommand.ExecuteReader();
-			using (rdr)
-			{
-				while(rdr.Read())
-				{
-					crops.Add((string)rdr["cropName"]);
-				}
-			}
+            using (rdr)
+            {
+                while (rdr.Read())
+                {
+                    crops.Add((string)rdr["cropName"]);
+                }
+            }
             rdr.Close();
-			return crops.ToArray();
-		}
+            return crops.ToArray();
+        }
 
         // returns the crop's id from its name
-		public static int GetCropIDFromName(string cropName)
-		{
+        public static int GetCropIDFromName(string cropName)
+        {
             int id = 0;
             mCommand.CommandText = "Select id from Crops where cropName = @cropName;";
             mCommand.Parameters.Clear();
@@ -299,5 +289,5 @@ namespace CropsNH
                 }
             }
         }
-	}
+    }
 }

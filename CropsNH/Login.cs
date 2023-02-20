@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace CropsNH
 {
@@ -32,7 +23,7 @@ namespace CropsNH
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                id = (int) rdr["id"];
+                id = (int)rdr["id"];
             }
             rdr.Close();
             if (id <= 0)

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace CropsNH
 {
-    
+
     public class CropBreed
     {
         private static MySqlCommand command = new("", Program.mConnection);
@@ -41,7 +35,7 @@ namespace CropsNH
             {
                 while (rdr.Read())
                 {
-                    id = (int) rdr["id"];
+                    id = (int)rdr["id"];
                 }
             }
             return id;
@@ -69,8 +63,8 @@ namespace CropsNH
             {
                 while (rdr.Read())
                 {
-                    parentIDs[0] = (int) rdr["parentOneID"];
-                    parentIDs[1] = (int) rdr["parentTwoID"];
+                    parentIDs[0] = (int)rdr["parentOneID"];
+                    parentIDs[1] = (int)rdr["parentTwoID"];
                 }
             }
             rdr.Close();
