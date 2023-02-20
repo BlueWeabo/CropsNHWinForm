@@ -29,6 +29,7 @@ namespace CropsNH
 
         public float MutationChance { get; set; }
 
+        // Adds a crop with the given parameters. This adds a crop which comes from 2 parents
 		public static void AddCrop(string cropName, int tier, string requirements, int cropBreedID)
 		{
             mCommand.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements, cropBreedID)" +
@@ -41,6 +42,7 @@ namespace CropsNH
 			mCommand.ExecuteNonQuery();
         }
 
+        // Adds a crop with the given parameters. This adds a crop, which has no parents
         public static void AddCropWithoutBreed(string cropName, int tier, string requirements)
         {
             mCommand.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements)" +
@@ -52,6 +54,7 @@ namespace CropsNH
             mCommand.ExecuteNonQuery();
         }
 
+        // Returns all crop names in an array form
         public static string[] GetCropNames()
 		{
             List<string> crops = new()
@@ -72,6 +75,7 @@ namespace CropsNH
 			return crops.ToArray();
 		}
 
+        // returns the crop's id from its name
 		public static int GetCropIDFromName(string cropName)
 		{
             int id = 0;
@@ -91,6 +95,7 @@ namespace CropsNH
             return id;
         }
 
+        // returns the crop's name from its id
         public static string GetCropNameFromID(int cropID)
         {
             string name = "";
@@ -109,6 +114,7 @@ namespace CropsNH
             return name;
         }
 
+        // Returns the crop requirements from the crop id
         public static string GetCropRequirementsFromID(int aCropID)
         {
             string requirements = "";
@@ -127,6 +133,7 @@ namespace CropsNH
             return requirements;
         }
 
+        // Returns the crop's tier from its id
         public static int GetCropTierFromID(int aCropID)
         {
             int tier = 0;
@@ -145,6 +152,7 @@ namespace CropsNH
             return tier;
         }
 
+        // Returns the crop which was registered with the given name
         public static Crop GetWholeCropFromName(string aCropName)
         {
             Crop tCrop = new();
@@ -164,6 +172,7 @@ namespace CropsNH
             return tCrop;
         }
 
+        // Updates the whole crop at its id. This changes everything from name to crop breed
         public static void UpdateCrop(Crop aCrop)
         {
             mCommand.CommandText = "Update Crops " +
@@ -179,6 +188,8 @@ namespace CropsNH
             mCommand.ExecuteNonQuery();
             if (aCrop.cropbreed != 0)
             {
+                // If One of the parents was set to none or removed. We need to remove the breeding id in the CropBreed table
+                // Otherwise we edit the crop breed with the new parents' ids
                 if (aCrop.ParentOne == null || aCrop.ParentTwo == null || aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None"))
                 {
                     mCommand.CommandText = "Update Crops set cropBreedID = null where id = @id;";
@@ -189,6 +200,7 @@ namespace CropsNH
                 }
                 else
                 {
+                    // If the crop Breed was changed. wewill update it here
                     int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
                     int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
                     mCommand.Parameters.Clear();
@@ -204,6 +216,7 @@ namespace CropsNH
             }
             else
             {
+                // If there was no crop breed, we need to check if one was added and add it as a new crop breed
                 if (aCrop.ParentOne == null || aCrop.ParentTwo == null || aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None")) return;
                 CropBreed.AddCropBreed(GetCropIDFromName(aCrop.ParentOne), GetCropIDFromName(aCrop.ParentTwo));
                 CropBreed.UpdateCropBredIDWithCropBreedID(aCrop.CropID,
@@ -213,6 +226,7 @@ namespace CropsNH
             }
         }
 
+        // Sets a new cropbreedID from the crop's id
         public static void SetCropBreedIDForCropID(int cropID, int cropBreedID)
         {
             mCommand.CommandText = "Update Crops set cropBreedID = @cropBreedID where id = @cropID;";
@@ -222,6 +236,7 @@ namespace CropsNH
             mCommand.ExecuteNonQuery();
         }
 
+        // Deletes the cropwith the given name
         public static void DeleteCropWithName(string aCropName)
         {
             Crop tCrop = GetWholeCropFromName(aCropName);
@@ -241,6 +256,7 @@ namespace CropsNH
             mCommand.ExecuteNonQuery();
         }
 
+        // Loads all crops into a list, which is then used to put int a data grid view
         public static void LoadCropList()
         {
             Crops.Clear();
@@ -264,6 +280,8 @@ namespace CropsNH
                 }
             }
             rdr.Close();
+            // After we have gotten each crop and their cropBreed, we will go over the list we have and then get the parents of said crops to give
+            // that information to the data grid view. If the cropbreed equals 0 then there is none, and thus there are no parents
             foreach (Crop crop in Crops)
             {
                 if (crop.cropbreed != 0)

@@ -19,6 +19,7 @@ namespace CropsNH
             InitializeComponent();
         }
 
+        // Whenever the login button is clicked we will try to see if the one has logged with the correct username and password
         private void LoginButton_Click(object sender, EventArgs e)
         {
             MySqlCommand cmd = new()
@@ -43,6 +44,7 @@ namespace CropsNH
             Close();
         }
 
+        // if the close button was pressed we must also close the main program
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Program.mMenu.Close();
