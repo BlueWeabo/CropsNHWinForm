@@ -8,7 +8,7 @@ namespace CropsNH
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static BindingList<Crop> Crops = new();
 #pragma warning restore CA2211 // Non-constant fields should not be visible
-        private static readonly MySqlCommand mCommand = new("", Program.mConnection);
+        private static readonly MySqlCommand command = new("", Program.mConnection);
         public int cropbreed = 0;
         public int CropID { get; set; }
         public string? CropName { get; set; }
@@ -22,26 +22,26 @@ namespace CropsNH
         // Adds a crop with the given parameters. This adds a crop which comes from 2 parents
         public static void AddCrop(string cropName, int tier, string requirements, int cropBreedID)
         {
-            mCommand.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements, cropBreedID)" +
+            command.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements, cropBreedID)" +
                 "values (@cropName, @cropTier, @cropRequirements, @cropBreed);";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropName", cropName);
-            mCommand.Parameters.AddWithValue("@cropTier", tier);
-            mCommand.Parameters.AddWithValue("@cropRequirements", requirements);
-            mCommand.Parameters.AddWithValue("@cropBreed", cropBreedID);
-            mCommand.ExecuteNonQuery();
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropName", cropName);
+            command.Parameters.AddWithValue("@cropTier", tier);
+            command.Parameters.AddWithValue("@cropRequirements", requirements);
+            command.Parameters.AddWithValue("@cropBreed", cropBreedID);
+            command.ExecuteNonQuery();
         }
 
         // Adds a crop with the given parameters. This adds a crop, which has no parents
         public static void AddCropWithoutBreed(string cropName, int tier, string requirements)
         {
-            mCommand.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements)" +
+            command.CommandText = "Insert into Crops(cropName, cropTier, cropRequirements)" +
                 "values (@cropName, @cropTier, @cropRequirements);";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropName", cropName);
-            mCommand.Parameters.AddWithValue("@cropTier", tier);
-            mCommand.Parameters.AddWithValue("@cropRequirements", requirements);
-            mCommand.ExecuteNonQuery();
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropName", cropName);
+            command.Parameters.AddWithValue("@cropTier", tier);
+            command.Parameters.AddWithValue("@cropRequirements", requirements);
+            command.ExecuteNonQuery();
         }
 
         // Returns all crop names in an array form
@@ -51,9 +51,9 @@ namespace CropsNH
             {
                 "None"
             };
-            mCommand.CommandText = "Select cropName from Crops";
-            mCommand.Parameters.Clear();
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select cropName from Crops";
+            command.Parameters.Clear();
+            MySqlDataReader rdr = command.ExecuteReader();
             using (rdr)
             {
                 while (rdr.Read())
@@ -69,10 +69,10 @@ namespace CropsNH
         public static int GetCropIDFromName(string cropName)
         {
             int id = 0;
-            mCommand.CommandText = "Select id from Crops where cropName = @cropName;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropName", cropName);
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select id from Crops where cropName = @cropName;";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropName", cropName);
+            MySqlDataReader rdr = command.ExecuteReader();
             using (rdr)
             {
                 while (rdr.Read())
@@ -81,7 +81,7 @@ namespace CropsNH
                 }
             }
             rdr.Close();
-            mCommand.Parameters.Clear();
+            command.Parameters.Clear();
             return id;
         }
 
@@ -89,10 +89,10 @@ namespace CropsNH
         public static string GetCropNameFromID(int cropID)
         {
             string name = "";
-            mCommand.CommandText = "Select cropName from Crops where id = @cropID;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropID", cropID);
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select cropName from Crops where id = @cropID;";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropID", cropID);
+            MySqlDataReader rdr = command.ExecuteReader();
             using (rdr)
             {
                 while (rdr.Read())
@@ -108,10 +108,10 @@ namespace CropsNH
         public static string GetCropRequirementsFromID(int aCropID)
         {
             string requirements = "";
-            mCommand.CommandText = "Select cropRequirements from Crops where id = @cropID;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropID", aCropID);
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select cropRequirements from Crops where id = @cropID;";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropID", aCropID);
+            MySqlDataReader rdr = command.ExecuteReader();
             using (rdr)
             {
                 while (rdr.Read())
@@ -127,10 +127,10 @@ namespace CropsNH
         public static int GetCropTierFromID(int aCropID)
         {
             int tier = 0;
-            mCommand.CommandText = "Select cropTier from Crops where id = @cropID;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropID", aCropID);
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select cropTier from Crops where id = @cropID;";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropID", aCropID);
+            MySqlDataReader rdr = command.ExecuteReader();
             using (rdr)
             {
                 while (rdr.Read())
@@ -146,10 +146,10 @@ namespace CropsNH
         public static Crop GetWholeCropFromName(string aCropName)
         {
             Crop tCrop = new();
-            mCommand.CommandText = "Select * from Crops where cropName = @cropName";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropName", aCropName);
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select * from Crops where cropName = @cropName";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropName", aCropName);
+            MySqlDataReader rdr = command.ExecuteReader();
             while (rdr.Read())
             {
                 tCrop.CropID = (int)rdr["id"];
@@ -165,27 +165,27 @@ namespace CropsNH
         // Updates the whole crop at its id. This changes everything from name to crop breed
         public static void UpdateCrop(Crop aCrop)
         {
-            mCommand.CommandText = "Update Crops " +
+            command.CommandText = "Update Crops " +
                 "set cropName = @cropName, " +
                 "cropTier = @cropTier, " +
                 "cropRequirements = @cropRequirements " +
                 "where id = @id;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropName", aCrop.CropName);
-            mCommand.Parameters.AddWithValue("@cropTier", aCrop.Tier);
-            mCommand.Parameters.AddWithValue("@cropRequirements", aCrop.Requirements);
-            mCommand.Parameters.AddWithValue("@id", aCrop.CropID);
-            mCommand.ExecuteNonQuery();
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropName", aCrop.CropName);
+            command.Parameters.AddWithValue("@cropTier", aCrop.Tier);
+            command.Parameters.AddWithValue("@cropRequirements", aCrop.Requirements);
+            command.Parameters.AddWithValue("@id", aCrop.CropID);
+            command.ExecuteNonQuery();
             if (aCrop.cropbreed != 0)
             {
                 // If One of the parents was set to none or removed. We need to remove the breeding id in the CropBreed table
                 // Otherwise we edit the crop breed with the new parents' ids
                 if (aCrop.ParentOne == null || aCrop.ParentTwo == null || aCrop.ParentOne.Equals("None") || aCrop.ParentTwo.Equals("None"))
                 {
-                    mCommand.CommandText = "Update Crops set cropBreedID = null where id = @id;";
-                    mCommand.Parameters.Clear();
-                    mCommand.Parameters.AddWithValue("@id", aCrop.CropID);
-                    mCommand.ExecuteNonQuery();
+                    command.CommandText = "Update Crops set cropBreedID = null where id = @id;";
+                    command.Parameters.Clear();
+                    command.Parameters.AddWithValue("@id", aCrop.CropID);
+                    command.ExecuteNonQuery();
                     CropBreed.RemoveCropBreed(aCrop.cropbreed);
                 }
                 else
@@ -193,15 +193,15 @@ namespace CropsNH
                     // If the crop Breed was changed. wewill update it here
                     int p1 = GetCropIDFromName(aCrop.ParentOne is null ? "" : aCrop.ParentOne);
                     int p2 = GetCropIDFromName(aCrop.ParentTwo is null ? "" : aCrop.ParentTwo);
-                    mCommand.Parameters.Clear();
-                    mCommand.CommandText = "Update CropBreed " +
+                    command.Parameters.Clear();
+                    command.CommandText = "Update CropBreed " +
                         "set parentOneID = @parentOneID, " +
                         "parentTwoID = @parentTwoID " +
                         "where cropBredID = @cropBredID;";
-                    mCommand.Parameters.AddWithValue("@parentOneID", p1);
-                    mCommand.Parameters.AddWithValue("@parentTwoID", p2);
-                    mCommand.Parameters.AddWithValue("@cropBredID", aCrop.CropID);
-                    mCommand.ExecuteNonQuery();
+                    command.Parameters.AddWithValue("@parentOneID", p1);
+                    command.Parameters.AddWithValue("@parentTwoID", p2);
+                    command.Parameters.AddWithValue("@cropBredID", aCrop.CropID);
+                    command.ExecuteNonQuery();
                 }
             }
             else
@@ -219,11 +219,11 @@ namespace CropsNH
         // Sets a new cropbreedID from the crop's id
         public static void SetCropBreedIDForCropID(int cropID, int cropBreedID)
         {
-            mCommand.CommandText = "Update Crops set cropBreedID = @cropBreedID where id = @cropID;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropBreedID", cropBreedID);
-            mCommand.Parameters.AddWithValue("@cropID", cropID);
-            mCommand.ExecuteNonQuery();
+            command.CommandText = "Update Crops set cropBreedID = @cropBreedID where id = @cropID;";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropBreedID", cropBreedID);
+            command.Parameters.AddWithValue("@cropID", cropID);
+            command.ExecuteNonQuery();
         }
 
         // Deletes the cropwith the given name
@@ -232,27 +232,27 @@ namespace CropsNH
             Crop tCrop = GetWholeCropFromName(aCropName);
             if (tCrop.cropbreed != 0)
             {
-                mCommand.CommandText = "Update Crops set cropBreedID = @cropBreed where id = @id;";
-                mCommand.Parameters.Clear();
-                mCommand.Parameters.AddWithValue("@cropBreed", 1);
-                mCommand.Parameters.AddWithValue("@id", tCrop.CropID);
-                mCommand.ExecuteNonQuery();
+                command.CommandText = "Update Crops set cropBreedID = @cropBreed where id = @id;";
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("@cropBreed", 1);
+                command.Parameters.AddWithValue("@id", tCrop.CropID);
+                command.ExecuteNonQuery();
                 CropBreed.RemoveCropBreed(tCrop.cropbreed);
 
             }
-            mCommand.CommandText = "Delete from Crops where cropName = @cropName;";
-            mCommand.Parameters.Clear();
-            mCommand.Parameters.AddWithValue("@cropName", aCropName);
-            mCommand.ExecuteNonQuery();
+            command.CommandText = "Delete from Crops where cropName = @cropName;";
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@cropName", aCropName);
+            command.ExecuteNonQuery();
         }
 
         // Loads all crops into a list, which is then used to put int a data grid view
         public static void LoadCropList()
         {
             Crops.Clear();
-            mCommand.CommandText = "Select * from Crops;";
-            mCommand.Parameters.Clear();
-            MySqlDataReader rdr = mCommand.ExecuteReader();
+            command.CommandText = "Select * from Crops;";
+            command.Parameters.Clear();
+            MySqlDataReader rdr = command.ExecuteReader();
             using (rdr)
             {
                 while (rdr.Read())
