@@ -10,8 +10,7 @@ namespace CropsNH
         static void Main()
         {
             mConnection.Open();
-            ApplicationConfiguration.Initialize();
-            Application.Run(mMenu);
+            mMenu.ShowDialog();
         }
     }
 }

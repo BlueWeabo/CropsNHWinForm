@@ -230,6 +230,7 @@ namespace CropsNH
         public static void DeleteCropWithName(string aCropName)
         {
             Crop tCrop = GetWholeCropFromName(aCropName);
+            // If there is a crop breed we must first remove it by changing the crop's cropBreedID reference key to 1, to allows us to delete the crop
             if (tCrop.cropbreed != 0)
             {
                 command.CommandText = "Update Crops set cropBreedID = @cropBreed where id = @id;";
